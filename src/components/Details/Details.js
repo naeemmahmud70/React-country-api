@@ -5,12 +5,12 @@ import './Details.css'
 const Details = () => {
     const {countryName} = useParams()
     const [country, setCountry] = useState([])
-    const {flag, name, capital, population, area, cioc, region} = country
+    const {flag, name, capital, population, area, region} = country
     useEffect(()=>{
 fetch(`https://restcountries.eu/rest/v2/name/${countryName}`)
 .then(res => res.json())
 .then(data => setCountry(data[0]))
-    },[])
+    },[countryName])
 
     return (
         <div className="d-flex justify-content-center">
@@ -21,7 +21,6 @@ fetch(`https://restcountries.eu/rest/v2/name/${countryName}`)
             <h3>Population: {population}</h3>
             <h3>Area: {area}</h3>
             <h3>Region: {region}</h3>
-            <h3>Cion: {cioc}</h3>
         </div>
         </div>
     );
